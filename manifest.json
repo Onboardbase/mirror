@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Secret Key Detector",
+  "version": "0.0.1",
+  "author": "Onboardbase",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["./scripts/main.js"],
+      "type": "module"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Scan for Keys"
+  }
+}
