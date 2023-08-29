@@ -19,7 +19,6 @@ body {
     font-family: Inter var, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
     Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
     Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-    padding: 15px;
     background: var(--dark-bg);
     color: var(--white-color);
     width: 250px;
@@ -73,7 +72,6 @@ transform: rotate(-90deg) translateX(-10rem);
 .toggle-container {
     position: relative;
     padding-left: 30px;
-    /* margin-top: 15px; */
 }
 
 .toggle-blur {

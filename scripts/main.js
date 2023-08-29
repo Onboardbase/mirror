@@ -193,7 +193,7 @@ function createTailwindModal(keys) {
           <div class="flex-shrink-0">
             <button
               type="button"
-              class="inline-flex items-center justify-center rounded-md bg-white border-gray-100 border text-gray-500 w-44 px-8 py-2 text-sm font-medium text-white focus:outline-none"
+              class="inline-flex items-center justify-center cursor-pointer rounded-md bg-white border-gray-100 border text-gray-500 hover:text-gray-400 w-44 px-8 py-2 text-sm font-medium text-white focus:outline-none"
             >
               Cancel
             </button>
@@ -201,7 +201,7 @@ function createTailwindModal(keys) {
           <div class="flex-shrink-0">
             <button
               type="submit"
-              class="inline-flex items-center justify-center rounded-md bg-black w-44 px-8 py-2 text-sm font-medium text-white focus:outline-none"
+              class="inline-flex items-center justify-center cursor-pointer rounded-md bg-black w-44 px-8 py-2 text-sm font-medium text-white focus:outline-none"
             >
               Add
             </button>
