@@ -70,7 +70,8 @@ function scanPageForKeys() {
     console.log(foundKeys);
 
     if (foundKeys.length > 0) {
-      createTailwindModal(foundKeys);
+      // createTailwindModal(foundKeys);
+      alert(foundKeys)
     }
     
     return foundKeys;
