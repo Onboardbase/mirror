@@ -12,6 +12,9 @@
       "type": "module"
     }
   ],
+  "icons": {
+    "144": "/img/obb-144.png"
+  },
   "action": {
     "default_popup": "popup.html",
     "default_title": "Scan for Keys"
