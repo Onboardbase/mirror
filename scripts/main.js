@@ -159,6 +159,10 @@ function createTailwindModal(keys) {
   // Create modal HTML
   const modalHTML = `
   <div id="keyModal" class="fixed z-10 inset-0 overflow-y-auto flex justify-center items-center">
+  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+      <div class="inline-block align-bottom text-left transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full">
   <div class="bg-white sm:rounded-lg w-96 mx-7 relative shadow-xs">
     <div class="flex justify-between items-center py-4 px-4 border-b border-gray-100">
       <div class="">
@@ -215,6 +219,8 @@ function createTailwindModal(keys) {
         alt="Onboardbase logo"
       />
     </div>
+  </div>
+  </div>
   </div>
 </div>
   `;
