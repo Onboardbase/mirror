@@ -162,12 +162,12 @@ function createTailwindModal(keys) {
   <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
     <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-      <div class="inline-block align-bottom text-left transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full">
+      <div class="inline-block align-middle">
   <div class="bg-white sm:rounded-lg w-96 mx-7 relative shadow-xs">
     <div class="flex justify-between items-center py-4 px-4 border-b border-gray-100">
-      <div class="">
-        <h2 class="text-xl md:text-xl leading-4 font-extrabold">Start here</h2>
-        <p class="mt-1 text-sm leading-5 text-gray-500 font-medium max-w">give access</p>
+      <div class="text-left">
+        <h2 class="text-xl md:text-xl leading-4 font-extrabold">Detect Keys</h2>
+        <p class="mt-1 text-sm leading-5 text-gray-500 font-medium">Add to Onboardbase</p>
       </div>
       <a href="/">
         <img
@@ -177,12 +177,12 @@ function createTailwindModal(keys) {
         />
       </a>
     </div>
-    <div class="bg-cool-gray-50 overflow-hidden font-mono border-b border-gray-100">
+    <div class="">
       <form class="" autocomplete="off">
-        <div class="">
+        <div class="border-b border-gray-100 text-left">
           <textarea
             rows="4"
-            class="form-textarea font-mono block h-60 resize-none w-full bg-cool-gray-50 text-gray-500 transition duration-150 border-none placeholder-gray-500 rounded-none focus:border-none focus:outline-none outline-none focus:shadow-none font-medium ease-in-out text-sm break-words sm:leading-5 p-3"
+            class="form-textarea text-left font-mono block h-60 resize-none w-full bg-cool-gray-50 text-gray-500 transition duration-150 border-none placeholder-gray-500 rounded-none focus:border-none focus:outline-none outline-none focus:shadow-none font-medium ease-in-out text-sm break-words sm:leading-5 p-3"
             placeholder="key=value goes here..."
             autofocus="autofocus"
           >
@@ -193,7 +193,7 @@ function createTailwindModal(keys) {
           <div class="flex-shrink-0">
             <button
               type="submit"
-              class="inline-flex items-center justify-center rounded-md bg-black w-44 px-8 py-2 text-sm font-medium text-white focus:outline-none"
+              class="inline-flex items-center justify-center rounded-md bg-white border-gray-100 border text-gray-500 w-44 px-8 py-2 text-sm font-medium text-white focus:outline-none"
             >
               Cancel
             </button>
@@ -203,7 +203,7 @@ function createTailwindModal(keys) {
               type="submit"
               class="inline-flex items-center justify-center rounded-md bg-black w-44 px-8 py-2 text-sm font-medium text-white focus:outline-none"
             >
-              Continue
+              Add
             </button>
           </div>
         </div>
