@@ -1,9 +1,56 @@
+:root {
+    --main-bg-color: brown;
+    --dark-bg: #000000;
+    --semi-dark-bg: #191F29;
+    --btn-bg: #6772E5;
+    --light-purple: #A3AAEF;
+    --nlight-purple: #818cf8;
+    --tert-color: #F5BE58;
+    --white-color: #FFF;
+    --blue-color: #06A3F2;
+    --green-color: #4AAE90; 
+    --fad-dark:#17181D;
+		--gray-color: #888F96;
+} 
+
 body {
     /* font-family: 'Poppins', sans-serif; */
     font-family: Inter var, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
     Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
     Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     padding: 15px;
+    background: var(--dark-bg);
+    color: var(--white-color);
+    width: 250px;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+h2 {
+    margin:0;
+}
+
+.banner {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--fad-dark);
+}
+
+.banner p {
+    color: var(--gray-color);
+}
+
+.option-list {
+    margin-bottom: 5px;
+}
+
+.scan-button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: var(--btn-bg);
+    color: var(--white-color);
+    border: none;
+    outline: none;
 }
 
 label {
@@ -15,7 +62,11 @@ transform: rotate(-90deg) translateX(-10rem);
 }
 .toggle-container {
     position: relative;
-    padding-left: 35px;
+    padding-left: 30px;
+    /* margin-top: 15px; */
+}
+
+.toggle-blur {
     margin-top: 15px;
 }
 
@@ -25,35 +76,35 @@ input[type="checkbox"] {
     position: absolute;
 }
 
-input[type="checkbox"] + label {
+/* input[type="checkbox"] + label {
     padding-left: 30px;
-}
+} */
 
 input[type="checkbox"] + label:before {
     content: '';
     position: absolute;
     left: 0;
     top: 0;
-    width: 26px;
-    height: 26px;
-    border: 1px solid #aaa;
-    background-color: #f8f8f8;
-    border-radius: 13px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid var(--fad-dark);
+    background-color: #fff;
+    border-radius: 5px;
     transition: all 0.3s ease;
 }
 
 input[type="checkbox"]:checked + label:before {
-    background-color: #60d394;
-    border-color: #60d394;
+    background-color: var(--btn-bg);
+    border-color: var(--btn-bg);
 }
 
 input[type="checkbox"]:checked + label:after {
     content: '';
     position: absolute;
-    top: 6px;
-    left: 7px;
-    width: 12px;
-    height: 12px;
+    top: 4.5px;
+    left: 4.5px;
+    width: 8px;
+    height: 8px;
     border-radius: 6px;
     background-color: #fff;
     transition: left 0.15s ease;

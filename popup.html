@@ -11,18 +11,23 @@
     />
 </head>
 <body>
-    <h2>Onboardbase Secret Mirror</h2>
-    <p class="text-indigo-500">A secret key and env detector for Onboardbase</p>
-    <button id="scan" class="bg-indigo-500">Scan for Keys</button>
+    <div>
+        <div class="banner">
+            <h2>Onboardbase Secret Mirror</h2>
+            <p class="text-indigo-500">A secret key and env detector for Onboardbase</p>
+            <button id="scan" class="scan-button">Scan for Keys</button>
+        </div>
+        <div class="option-list">
+            <div class="toggle-container">
+                <input type="checkbox" id="run-in-background">
+                <label for="run-in-background">Run in Background</label>
+            </div>
 
-    <div class="toggle-container">
-        <input type="checkbox" id="run-in-background">
-        <label for="run-in-background">Run in Background</label>
-    </div>
-
-    <div class="toggle-container">
-        <input type="checkbox" id="auto-blur">
-        <label for="auto-blur">Auto Blur Keys</label>
+            <div class="toggle-container toggle-blur">
+                <input type="checkbox" id="auto-blur">
+                <label for="auto-blur">Auto Blur Keys</label>
+            </div>
+        </div>
     </div>
 
     <script src="scripts/popup.js"></script>
