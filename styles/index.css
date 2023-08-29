@@ -10,6 +10,7 @@
     --blue-color: #06A3F2;
     --green-color: #4AAE90; 
     --fad-dark:#17181D;
+    --fad-dark-s:#222329;
 		--gray-color: #888F96;
 } 
 
@@ -28,6 +29,7 @@ body {
 
 h2 {
     margin:0;
+    font-size: 15px;
 }
 
 .banner {
@@ -38,6 +40,13 @@ h2 {
 
 .banner p {
     color: var(--gray-color);
+    line-height: 1.5;
+}
+
+.banner-caption img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }
 
 .option-list {
@@ -76,6 +85,11 @@ input[type="checkbox"] {
     position: absolute;
 }
 
+.toggle-container input[type="checkbox"], .toggle-container label, .banner-caption img, .banner-caption h2{
+    display: inline-block;
+    vertical-align: middle;
+}
+
 /* input[type="checkbox"] + label {
     padding-left: 30px;
 } */
@@ -87,8 +101,8 @@ input[type="checkbox"] + label:before {
     top: 0;
     width: 15px;
     height: 15px;
-    border: 1px solid var(--fad-dark);
-    background-color: #fff;
+    border: 1px solid var(--fad-dark-s);
+    background-color: var(--fad-dark);
     border-radius: 5px;
     transition: all 0.3s ease;
 }
@@ -106,7 +120,7 @@ input[type="checkbox"]:checked + label:after {
     width: 8px;
     height: 8px;
     border-radius: 6px;
-    background-color: #fff;
+    background-color: var(--white-color);
     transition: left 0.15s ease;
 }
 
