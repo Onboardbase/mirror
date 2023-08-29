@@ -67,12 +67,7 @@ function scanPageForKeys() {
         });
       }
 
-    console.log(foundKeys)
-  
-    // if (foundKeys.length > 0) {
-    //     confirm("Detected keys:\n\n" + foundKeys.join("\n") + " \n do you want to add it to your Onboardbase account?");
-        
-    // }
+    console.log(foundKeys);
 
     if (foundKeys.length > 0) {
       createTailwindModal(foundKeys);
@@ -81,11 +76,7 @@ function scanPageForKeys() {
     return foundKeys;
 }
 
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  if (message.action === "scan_for_keys") {
-      scanPageForKeys();
-  }
-});
+
 
 
 // This function will be used to blur the found keys.
@@ -167,39 +158,65 @@ function injectTailwindCSS() {
 function createTailwindModal(keys) {
   // Create modal HTML
   const modalHTML = `
-    <div id="keyModal" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-      <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-        <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        <div class="inline-block align-bottom bg-white rounded-lg text-left shadow-xl relative transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full">
-          <div class="flex items-center py-3.5 px-4 border-b border-gray-100/5">
-            <h2 class="text-xl leading-4 font-extrabold text-black">Detected keys</h2>
-            <p class="text-sm leading-5 font-medium text-gray-500">add to Onboardbase</p>
-          </div>
-          <div class="p-3 bg-cool-gray-50 border-b border-gray-100/5 h-60 overflow-hidden text-sm text-gray-500">
-            ${keys.join('<br>')}
-          </div>
-          <div class="px-4 py-3 sm:flex items-center">
-            <button id="modalCancel" type="button" class="w-full inline-flex justify-center rounded-md border border-gray-200 px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:w-auto sm:text-sm">
+  <div id="keyModal" class="fixed z-10 inset-0 overflow-y-auto flex justify-center items-center">
+  <div class="bg-white sm:rounded-lg w-96 mx-7 relative shadow-xs">
+    <div class="flex justify-between items-center py-4 px-4 border-b border-gray-100">
+      <div class="">
+        <h2 class="text-xl md:text-xl leading-4 font-extrabold">Start here</h2>
+        <p class="mt-1 text-sm leading-5 text-gray-500 font-medium max-w">give access</p>
+      </div>
+      <a href="/">
+        <img
+          class="h-8 md:h-6"
+          src="https://devapp.onboardbase.com/img/new-logo-dark.03886ba5.png"
+          alt="Onboardbase Logo"
+        />
+      </a>
+    </div>
+    <div class="bg-cool-gray-50 overflow-hidden font-mono border-b border-gray-100">
+      <form class="" autocomplete="off">
+        <div class="">
+          <textarea
+            rows="4"
+            class="form-textarea font-mono block h-60 resize-none w-full bg-cool-gray-50 text-gray-500 transition duration-150 border-none placeholder-gray-500 rounded-none focus:border-none focus:outline-none outline-none focus:shadow-none font-medium ease-in-out text-sm break-words sm:leading-5 p-3"
+            placeholder="key=value goes here..."
+            autofocus="autofocus"
+          >
+          ${keys}
+          </textarea>
+        </div>
+        <div class="flex items-center justify-center px-4 py-2.5 space-x-3">
+          <div class="flex-shrink-0">
+            <button
+              type="submit"
+              class="inline-flex items-center justify-center rounded-md bg-black w-44 px-8 py-2 text-sm font-medium text-white focus:outline-none"
+            >
               Cancel
             </button>
-            <button id="addToOnboardbase" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-500 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
-              Add
+          </div>
+          <div class="flex-shrink-0">
+            <button
+              type="submit"
+              class="inline-flex items-center justify-center rounded-md bg-black w-44 px-8 py-2 text-sm font-medium text-white focus:outline-none"
+            >
+              Continue
             </button>
           </div>
-          <div
-            class="flex flex-row rot items-center justify-start origin-bottom-left border border-gray-100/10 border-b-0 py-1.5 px-3 gap-1 rounded-b-none absolute left-0 -ml-[1px] top-0 rounded-md bg-black"
-          >
-            <span class="text-so-small font-semibold text-gray-200">Secured by</span>
-            <img
-              class="mx-auto h-2.5 w-auto"
-              src="../img/onboardbase-2.png"
-              alt="Onboardbase logo"
-            />
-          </div>
         </div>
-      </div>
+      </form>
     </div>
+    <div
+      class="flex flex-row rot items-center justify-start origin-bottom-left py-1.5 px-3 gap-1 rounded-b-none absolute left-0 -ml-0 top-0 rounded-md bg-black"
+    >
+      <span class="text-so-small font-semibold text-gray-200">Secured by</span>
+      <img
+        class="mx-auto h-2.5 w-auto"
+        src="https://devapp.onboardbase.com/img/onboardbase-2.b9b8f490.png"
+        alt="Onboardbase logo"
+      />
+    </div>
+  </div>
+</div>
   `;
 
   document.body.insertAdjacentHTML('beforeend', modalHTML);
