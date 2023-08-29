@@ -50,6 +50,7 @@ function scanPageForKeys() {
         /twilio_[A-Za-z0-9\-_]+(?=\s|$)/g,                                      // Twilio API keys
         /heroku_[A-Za-z0-9\-_]+(?=\s|$)/g,                                      // Heroku API keys
         /sendgrid_[A-Za-z0-9\-_]+(?=\s|$)/g,                                    // SendGrid API keys
+        /[A-Za-z0-9\-_]{10,}[\-_.][A-Za-z0-9\-_]{10,}/g, // two segments of 10+ alphanumeric characters separated by a dash, dot, or underscore
     ];
     
     
