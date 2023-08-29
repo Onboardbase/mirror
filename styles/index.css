@@ -10,7 +10,9 @@ label {
     display: block;
     cursor: pointer;
 }
-
+.rot {
+transform: rotate(-90deg) translateX(-10rem);
+}
 .toggle-container {
     position: relative;
     padding-left: 35px;
