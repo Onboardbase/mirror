@@ -60,6 +60,7 @@ h2 {
     color: var(--white-color);
     border: none;
     outline: none;
+    cursor: pointer;
 }
 
 label {

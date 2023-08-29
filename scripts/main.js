@@ -67,7 +67,7 @@ function scanPageForKeys() {
         });
       }
 
-    console.log(foundKeys);
+    // console.log(foundKeys);
 
     if (foundKeys.length > 0) {
       createTailwindModal(foundKeys);
@@ -169,7 +169,7 @@ function createTailwindModal(keys) {
         <h2 class="text-xl md:text-xl leading-4 font-extrabold">Detect Keys</h2>
         <p class="mt-1 text-sm leading-5 text-gray-500 font-medium">Add to Onboardbase</p>
       </div>
-      <a href="/">
+      <a href="https://onboardbase.com">
         <img
           class="h-8 md:h-6"
           src="https://devapp.onboardbase.com/img/new-logo-dark.03886ba5.png"
@@ -192,7 +192,7 @@ function createTailwindModal(keys) {
         <div class="flex items-center justify-center px-4 py-2.5 space-x-3">
           <div class="flex-shrink-0">
             <button
-              type="submit"
+              type="button"
               class="inline-flex items-center justify-center rounded-md bg-white border-gray-100 border text-gray-500 w-44 px-8 py-2 text-sm font-medium text-white focus:outline-none"
             >
               Cancel
@@ -228,10 +228,10 @@ function createTailwindModal(keys) {
   document.body.insertAdjacentHTML('beforeend', modalHTML);
 
   function closeModal() {
-    console.log("Trying to close modal...");
+    // console.log("Trying to close modal...");
     const modal = document.getElementById("keyModal");
     if (modal) {
-      console.log("Modal found, removing...");
+      // console.log("Modal found, removing...");
       modal.remove();
     } else {
       console.log("Modal not found.");
@@ -248,7 +248,7 @@ function createTailwindModal(keys) {
       closeModal();
     });
   }
-  console.log(modalCancelButton)
+  // console.log(modalCancelButton)
 
   if (modalCancelButton) {
     modalCancelButton.addEventListener("click", closeModal);
