@@ -202,7 +202,6 @@ function createTailwindModal(keys) {
   document.body.insertAdjacentHTML('beforeend', modalHTML);
 
   function closeModal() {
-    alert("big dick")
     console.log("Trying to close modal...");
     const modal = document.getElementById("keyModal");
     if (modal) {
