@@ -202,6 +202,7 @@ function createTailwindModal(keys) {
   document.body.insertAdjacentHTML('beforeend', modalHTML);
 
   function closeModal() {
+    alert("big dick")
     console.log("Trying to close modal...");
     const modal = document.getElementById("keyModal");
     if (modal) {
@@ -219,7 +220,6 @@ function createTailwindModal(keys) {
 
   if (addToOnboardbaseButton) {
     addToOnboardbaseButton.addEventListener("click", function() {
-      // Add to Onboardbase logic here
       closeModal();
     });
   }
