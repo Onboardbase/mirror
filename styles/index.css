@@ -1,19 +1,11 @@
 :root {
-    --main-bg-color: brown;
     --dark-bg: #000000;
-    --semi-dark-bg: #191F29;
     --btn-bg: #6772E5;
-    --light-purple: #A3AAEF;
-    --nlight-purple: #818cf8;
     --tert-color: #F5BE58;
     --white-color: #FFF;
-    --blue-color: #06A3F2;
-    --green-color: #4AAE90; 
     --fad-dark:#17181D;
     --fad-dark-s:#222329;
-		--gray-color: #888F96;
-        --blur-btn-bg: #f39c12;
-        --blur-btn-border: #e67e22;  
+	--gray-color: #888F96;
 } 
 
 body {
@@ -53,15 +45,6 @@ h2 {
     margin-bottom: 5px;
 }
 
-/* .scan-button,
-.blur-button {
-  margin-bottom: 20px;
-} */
-
-/* .banner-buttons {
-
-} */
-
 
 .scan-button {
     padding: 8px 15px;
@@ -89,7 +72,7 @@ label {
     cursor: pointer;
 }
 .rot {
-transform: rotate(-90deg) translateX(-10rem);
+    transform: rotate(-90deg) translateX(-10rem);
 }
 .toggle-container {
     position: relative;

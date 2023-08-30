@@ -68,7 +68,7 @@ function scanPageForKeys() {
         });
       }
 
-    console.log(foundKeys);
+    // console.log(foundKeys);
     if (foundKeys.length > 0) {
       const trimmedKeys = foundKeys.map(key => key.trimStart());
       // Join the keys back into a single string separated by newline characters
@@ -179,7 +179,7 @@ function blurKeys(foundKeys) {
     foundKeys.forEach(key => {
       const blurSpan = `<span class="blurred-key">${key}</span>`;
       newNodeValue = newNodeValue.replace(key, blurSpan);
-      console.log(newNodeValue);
+      // console.log(newNodeValue);
     });
 
     if (newNodeValue !== node.nodeValue) {
@@ -199,19 +199,19 @@ function blurKeys(foundKeys) {
 
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  console.log('Message received:', message.action);
+  // console.log('Message received:', message.action);
 
   // Run blurKeys irrespective of message.action, but you will have to
   // fetch the keys if message.action !== 'scan_for_keys' or use a global variable
   let foundKeys = [];
   if (message.action === "scan_for_keys") {
     foundKeys = scanPageForKeys();
-    console.log('Found Keys Length:', foundKeys.length);
+    // console.log('Found Keys Length:', foundKeys.length);
   }
 
   if (message.action === "manually_blur_keys") {
     foundKeys = scanPageForKeysWithoutModal();
-    console.log('Blurred Keys Length:', foundKeys.length);
+    // console.log('Blurred Keys Length:', foundKeys.length);
   }
 
   
@@ -219,7 +219,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 });
 
 chrome.storage.local.get(['autoBlur'], function(data) {
-  console.log("Value of autoBlur is", data.autoBlur);
+  // console.log("Value of autoBlur is", data.autoBlur);
   if (data.autoBlur) {
     blurObserve();
   }
@@ -384,7 +384,7 @@ function createTailwindModal(keys) {
 
   // Attach an event listener to the modal background
   const modalBg = document.querySelector(".fixed.inset-0.bg-gray-900.bg-opacity-75");
-  console.log("here we go", modalBg)
+  // console.log("here we go", modalBg)
   modalBg.addEventListener("click", function() {
     closeModal();
   });
