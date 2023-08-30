@@ -12,6 +12,8 @@
     --fad-dark:#17181D;
     --fad-dark-s:#222329;
 		--gray-color: #888F96;
+        --blur-btn-bg: #f39c12;
+        --blur-btn-border: #e67e22;  
 } 
 
 body {
@@ -52,6 +54,12 @@ h2 {
     margin-bottom: 5px;
 }
 
+.scan-button,
+.blur-button {
+  margin-bottom: 20px;
+}
+
+
 .scan-button {
     padding: 8px 15px;
     border-radius: 5px;
@@ -61,6 +69,16 @@ h2 {
     outline: none;
     cursor: pointer;
 }
+
+.blur-button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: var(--blur-btn-bg);
+    color: var(--dark-color);
+    border: 2px solid var(--blur-btn-border);
+    outline: none;
+    cursor: pointer;
+  }
 
 label {
     display: block;

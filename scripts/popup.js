@@ -4,6 +4,13 @@ document.getElementById('scan').addEventListener('click', function() {
     });
 });
 
+document.getElementById('manualBlur').addEventListener('click', function() {
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {action: "manually_blur_keys"});
+    });
+});
+
+
 document.getElementById('run-in-background').addEventListener('change', function() {
     const isChecked = this.checked;
     chrome.storage.local.set({'runInBackground': isChecked});
