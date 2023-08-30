@@ -11,74 +11,75 @@ function scanPageForKeys() {
       );
 
       const keyPatterns = [
-        /sk_test_[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /sk_live_[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /Bearer [A-Za-z0-9\-_]+(?=\s|$)/g,
-        /api_key:[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /Authorization: Basic [A-Za-z0-9+/]+=?(?=\s|$)/g,
-        /AWS_ACCESS_KEY_ID=[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /pk_test_[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /pk_live_[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /api_key [A-Za-z0-9\-_]+(?=\s|$)/g,
-        /ACCESS_TOKEN:[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /SECRET_TOKEN:[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /BearerToken [A-Za-z0-9\-_]+(?=\s|$)/g,
-        /Token [A-Za-z0-9\-_]+(?=\s|$)/g,
-        /JWT [A-Za-z0-9\-_]+(?=\s|$)/g,
-        /GoogleMapsAPIKey[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /db_password=[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /client_secret[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /private_key[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /app_secret[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /app_key[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /api_secret[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /oauth_token[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /access_key[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /api_token[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /encryption_key[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /jwt_secret[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /auth_token[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /secret_key[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /private_token[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /rediss?:\/\/(?:[A-Za-z0-9\-_]+:)?[A-Za-z0-9\-_]+@[A-Za-z0-9\-_\.]+:\d+/g,  // Redis URLs with optional user
-        /postgres(?:s)?:\/\/[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /whsec_[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /sk-[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /mongodb+srv:\/\/[A-Za-z0-9\-_]+:[A-Za-z0-9\-_]+@[A-Za-z0-9\-_\.]+/g,   // MongoDB connection string
-        /x-api-key:[A-Za-z0-9\-_]+(?=\s|$)/g,                                   // Generic X-API-KEY header
-        /password=[A-Za-z0-9\-_]+(?=\s|$)/g,                                    // Generic password
-        /azure_[A-Za-z0-9\-_]+(?=\s|$)/g,                                       // Azure keys
-        /firebase[A-Za-z0-9\-_]+(?=\s|$)/g,                                     // Firebase keys
-        /twilio_[A-Za-z0-9\-_]+(?=\s|$)/g,                                      // Twilio API keys
-        /heroku_[A-Za-z0-9\-_]+(?=\s|$)/g,                                      // Heroku API keys
-        /sendgrid_[A-Za-z0-9\-_]+(?=\s|$)/g,                                    // SendGrid API key
-    ];
-    
+        { key: 'SK_TEST', pattern: /sk_test_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'SK_LIVE', pattern: /sk_live_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'BEARER', pattern: /Bearer [A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'API_KEY_COLON', pattern: /api_key:[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'AUTHORIZATION_BASIC', pattern: /Authorization: Basic [A-Za-z0-9+/]+=?(?=\s|$)/g },
+        { key: 'AWS_ACCESS_KEY_ID', pattern: /AWS_ACCESS_KEY_ID=[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'PK_TEST', pattern: /pk_test_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'PK_LIVE', pattern: /pk_live_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'API_KEY_SPACE', pattern: /api_key [A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'ACCESS_TOKEN_COLON', pattern: /ACCESS_TOKEN:[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'SECRET_TOKEN_COLON', pattern: /SECRET_TOKEN:[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'BEARER_TOKEN', pattern: /BearerToken [A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'TOKEN', pattern: /Token [A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'JWT', pattern: /JWT [A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'GOOGLE_MAPS_API_KEY', pattern: /GoogleMapsAPIKey[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'DB_PASSWORD', pattern: /db_password=[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'CLIENT_SECRET', pattern: /client_secret[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'PRIVATE_KEY', pattern: /private_key[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'APP_SECRET', pattern: /app_secret[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'APP_KEY', pattern: /app_key[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'API_SECRET', pattern: /api_secret[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'OAUTH_TOKEN', pattern: /oauth_token[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'ACCESS_KEY', pattern: /access_key[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'API_TOKEN', pattern: /api_token[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'ENCRYPTION_KEY', pattern: /encryption_key[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'JWT_SECRET', pattern: /jwt_secret[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'AUTH_TOKEN', pattern: /auth_token[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'SECRET_KEY', pattern: /secret_key[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'PRIVATE_TOKEN', pattern: /private_token[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'REDIS_URL', pattern: /rediss?:\/\/(?:[A-Za-z0-9\-_]+:)?[A-Za-z0-9\-_]+@[A-Za-z0-9\-_\.]+:\d+/g },
+        { key: 'POSTGRES_URL', pattern: /postgres(?:s)?:\/\/[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'WHSEC', pattern: /whsec_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'SK_HYPHEN', pattern: /sk-[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'MONGODB_URL', pattern: /mongodb+srv:\/\/[A-Za-z0-9\-_]+:[A-Za-z0-9\-_]+@[A-Za-z0-9\-_\.]+/g },
+        { key: 'X_API_KEY_COLON', pattern: /x-api-key:[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'GENERIC_PASSWORD', pattern: /password=[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'AZURE', pattern: /azure_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'FIREBASE', pattern: /firebase[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'TWILIO', pattern: /twilio_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'HEROKU', pattern: /heroku_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'SENDGRID', pattern: /sendgrid_[A-Za-z0-9\-_]+(?=\s|$)/g },
+      ];
+       
     
     
       const foundKeys = [];
-    
+
       while (textNodes.nextNode()) {
         const node = textNodes.currentNode;
-        keyPatterns.forEach(pattern => {
+        keyPatterns.forEach(({ key, pattern }) => {
           const matches = node.nodeValue.match(pattern);
           if (matches) {
-            foundKeys.push(...matches);
+            matches.forEach(match => {
+              foundKeys.push({ type: key, value: match });
+            });
           }
         });
       }
-
-    // console.log(foundKeys);
-    if (foundKeys.length > 0) {
-      const trimmedKeys = foundKeys.map(key => key.trimStart());
-      // Join the keys back into a single string separated by newline characters
-      const keysString = trimmedKeys.join('\n');
-      createTailwindModal(keysString);
-    }    
+        // console.log(foundKeys);
+        if (foundKeys.length > 0) {
+          const keysString = foundKeys.map(keyObj => `${keyObj.type}=${keyObj.value}`).join('\n');
+          createTailwindModal(keysString);
+        }
+        
     
     
     return foundKeys;
 }
+
 
   // Your content script logic
   function scanPageForKeysWithoutModal() {
@@ -88,79 +89,90 @@ function scanPageForKeys() {
         null,
         false
       );
-
       const keyPatterns = [
-        /sk_test_[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /sk_live_[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /Bearer [A-Za-z0-9\-_]+(?=\s|$)/g,
-        /api_key:[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /Authorization: Basic [A-Za-z0-9+/]+=?(?=\s|$)/g,
-        /AWS_ACCESS_KEY_ID=[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /pk_test_[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /pk_live_[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /api_key [A-Za-z0-9\-_]+(?=\s|$)/g,
-        /ACCESS_TOKEN:[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /SECRET_TOKEN:[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /BearerToken [A-Za-z0-9\-_]+(?=\s|$)/g,
-        /Token [A-Za-z0-9\-_]+(?=\s|$)/g,
-        /JWT [A-Za-z0-9\-_]+(?=\s|$)/g,
-        /GoogleMapsAPIKey[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /db_password=[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /client_secret[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /private_key[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /app_secret[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /app_key[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /api_secret[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /oauth_token[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /access_key[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /api_token[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /encryption_key[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /jwt_secret[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /auth_token[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /secret_key[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /private_token[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /rediss?:\/\/(?:[A-Za-z0-9\-_]+:)?[A-Za-z0-9\-_]+@[A-Za-z0-9\-_\.]+:\d+/g,  // Redis URLs with optional user
-        /postgres(?:s)?:\/\/[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /whsec_[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /sk-[A-Za-z0-9\-_]+(?=\s|$)/g,
-        /mongodb+srv:\/\/[A-Za-z0-9\-_]+:[A-Za-z0-9\-_]+@[A-Za-z0-9\-_\.]+/g,   // MongoDB connection string
-        /x-api-key:[A-Za-z0-9\-_]+(?=\s|$)/g,                                   // Generic X-API-KEY header
-        /password=[A-Za-z0-9\-_]+(?=\s|$)/g,                                    // Generic password
-        /azure_[A-Za-z0-9\-_]+(?=\s|$)/g,                                       // Azure keys
-        /firebase[A-Za-z0-9\-_]+(?=\s|$)/g,                                     // Firebase keys
-        /twilio_[A-Za-z0-9\-_]+(?=\s|$)/g,                                      // Twilio API keys
-        /heroku_[A-Za-z0-9\-_]+(?=\s|$)/g,                                      // Heroku API keys
-        /sendgrid_[A-Za-z0-9\-_]+(?=\s|$)/g,                                    // SendGrid API key
-    ];
-    
+        { key: 'SK_TEST', pattern: /sk_test_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'SK_LIVE', pattern: /sk_live_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'BEARER', pattern: /Bearer [A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'API_KEY_COLON', pattern: /api_key:[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'AUTHORIZATION_BASIC', pattern: /Authorization: Basic [A-Za-z0-9+/]+=?(?=\s|$)/g },
+        { key: 'AWS_ACCESS_KEY_ID', pattern: /AWS_ACCESS_KEY_ID=[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'PK_TEST', pattern: /pk_test_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'PK_LIVE', pattern: /pk_live_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'API_KEY_SPACE', pattern: /api_key [A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'ACCESS_TOKEN_COLON', pattern: /ACCESS_TOKEN:[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'SECRET_TOKEN_COLON', pattern: /SECRET_TOKEN:[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'BEARER_TOKEN', pattern: /BearerToken [A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'TOKEN', pattern: /Token [A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'JWT', pattern: /JWT [A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'GOOGLE_MAPS_API_KEY', pattern: /GoogleMapsAPIKey[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'DB_PASSWORD', pattern: /db_password=[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'CLIENT_SECRET', pattern: /client_secret[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'PRIVATE_KEY', pattern: /private_key[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'APP_SECRET', pattern: /app_secret[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'APP_KEY', pattern: /app_key[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'API_SECRET', pattern: /api_secret[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'OAUTH_TOKEN', pattern: /oauth_token[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'ACCESS_KEY', pattern: /access_key[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'API_TOKEN', pattern: /api_token[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'ENCRYPTION_KEY', pattern: /encryption_key[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'JWT_SECRET', pattern: /jwt_secret[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'AUTH_TOKEN', pattern: /auth_token[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'SECRET_KEY', pattern: /secret_key[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'PRIVATE_TOKEN', pattern: /private_token[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'REDIS_URL', pattern: /rediss?:\/\/(?:[A-Za-z0-9\-_]+:)?[A-Za-z0-9\-_]+@[A-Za-z0-9\-_\.]+:\d+/g },
+        { key: 'POSTGRES_URL', pattern: /postgres(?:s)?:\/\/[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'WHSEC', pattern: /whsec_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'SK_HYPHEN', pattern: /sk-[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'MONGODB_URL', pattern: /mongodb+srv:\/\/[A-Za-z0-9\-_]+:[A-Za-z0-9\-_]+@[A-Za-z0-9\-_\.]+/g },
+        { key: 'X_API_KEY_COLON', pattern: /x-api-key:[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'GENERIC_PASSWORD', pattern: /password=[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'AZURE', pattern: /azure_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'FIREBASE', pattern: /firebase[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'TWILIO', pattern: /twilio_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'HEROKU', pattern: /heroku_[A-Za-z0-9\-_]+(?=\s|$)/g },
+        { key: 'SENDGRID', pattern: /sendgrid_[A-Za-z0-9\-_]+(?=\s|$)/g },
+      ];
+       
     
     
       const foundKeys = [];
-    
+
       while (textNodes.nextNode()) {
         const node = textNodes.currentNode;
-        keyPatterns.forEach(pattern => {
+        keyPatterns.forEach(({ key, pattern }) => {
           const matches = node.nodeValue.match(pattern);
           if (matches) {
-            foundKeys.push(...matches);
+            matches.forEach(match => {
+              foundKeys.push({ type: key, value: match });
+            });
           }
         });
       }
+
 
     if (foundKeys.length > 0) {
       blurKeys(foundKeys);
     }
   
     return foundKeys;
+
 }
 
+const originalNodes = new Map();
+const keyStates = new Map();
+let keyFoundInDOM = false; // flag to check if key is found
 
 function blurKeys(foundKeys) {
-  // Injecting CSS for blurred-key
+  console.log('Found keys:', JSON.stringify(foundKeys));
+
+  // Injecting CSS for blurred-key and blurred-page
   const style = document.createElement('style');
   style.textContent = `
     .blurred-key {
-      filter: blur(10px);  // Adjust the blur value as needed
+      filter: blur(10px);
+    }
+    .blurred-page {
+      filter: blur(10px);
     }
   `;
   document.head.appendChild(style);
@@ -174,27 +186,58 @@ function blurKeys(foundKeys) {
 
   while (textNodes.nextNode()) {
     const node = textNodes.currentNode;
-    let newNodeValue = node.nodeValue;
+    console.log("Processing text node: ", node.nodeValue); 
+    let textContent = node.nodeValue;
 
-    foundKeys.forEach(key => {
-      const blurSpan = `<span class="blurred-key">${key}</span>`;
-      newNodeValue = newNodeValue.replace(key, blurSpan);
-      // console.log(newNodeValue);
+    const replacements = [];
+    foundKeys.forEach(({ value }) => {
+      let index = textContent.indexOf(value);
+      while (index !== -1) {
+        keyFoundInDOM = true; // key found
+        replacements.push({ start: index, end: index + value.length, value });
+        index = textContent.indexOf(value, index + 1);
+      }
     });
 
-    if (newNodeValue !== node.nodeValue) {
-      const container = document.createElement('div');
-      container.innerHTML = newNodeValue;
+    // Sort replacements by index
+    replacements.sort((a, b) => a.start - b.start);
+    console.log('Replacements:', JSON.stringify(replacements));
 
-      // Replace the original node with the new elements
-      while (container.firstChild) {
-        node.parentNode.insertBefore(container.firstChild, node);
-      }
+    if (replacements.length > 0) {
+      let lastIndex = 0;
+      let result = '';
 
-      node.parentNode.removeChild(node);
+      replacements.forEach(({ start, end, value }) => {
+        result += textContent.slice(lastIndex, start) + `<span class="blurred-key">${value}</span>`;
+        lastIndex = end;
+      });
+
+      result += textContent.slice(lastIndex);
+
+      const wrapper = document.createElement('span');
+      wrapper.innerHTML = result;
+      node.replaceWith(wrapper);
     }
   }
+
+  if (keyFoundInDOM) {
+    document.body.classList.add("blurred-page");
+  }
 }
+
+
+function removeBlur() {
+  originalNodes.forEach((originalNode, wrapper) => {
+    wrapper.replaceWith(originalNode);
+  });
+  originalNodes.clear();  // Clear saved nodes
+
+  keyStates.forEach((value, key) => {
+    keyStates.set(key, false);  // set all keys to unblurred
+  });
+}
+
+
 
 
 
@@ -311,10 +354,17 @@ function createTailwindModal(keys) {
     observer.disconnect();
   }
 
+  let keysString = '';
+  if (Array.isArray(keys)) {
+    keysString = keys.map(keyObj => `${keyObj.type}: ${keyObj.value}`).join('\n');
+  } else {
+    keysString = keys;
+  }
+
 
   // Create modal HTML
   const modalHTML = `
-  <div id="keyModal" class="fixed z-10 inset-0 overflow-y-auto flex justify-center items-center">
+  <div id="keyModal" class="fixed z-9999 inset-0 overflow-y-auto flex justify-center items-center">
   <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
     <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
@@ -341,7 +391,7 @@ function createTailwindModal(keys) {
         class="form-textarea text-left font-mono block h-60 resize-none w-full bg-cool-gray-50 text-gray-500 transition duration-150 border-none placeholder-gray-500 rounded-none focus:border-none focus:outline-none outline-none focus:shadow-none font-medium ease-in-out text-sm break-words sm:leading-5 p-3"
         placeholder="key=value goes here..."
         autofocus="autofocus"
-      >${keys}</textarea>
+      >${keysString}</textarea>
       
         </div>
         <div class="flex items-center justify-center px-4 py-2.5 space-x-3">
@@ -397,4 +447,3 @@ function createTailwindModal(keys) {
     }
   }
 }
-
