@@ -53,10 +53,14 @@ h2 {
     margin-bottom: 5px;
 }
 
-.scan-button,
+/* .scan-button,
 .blur-button {
   margin-bottom: 20px;
-}
+} */
+
+/* .banner-buttons {
+
+} */
 
 
 .scan-button {
@@ -67,14 +71,15 @@ h2 {
     border: none;
     outline: none;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .blur-button {
     padding: 8px 15px;
     border-radius: 5px;
-    background-color: var(--blur-btn-bg);
-    color: var(--dark-color);
-    border: 2px solid var(--blur-btn-border);
+    background-color: var(--white-color);
+    color: var(--fad-dark);
+    border: none;
     outline: none;
     cursor: pointer;
   }
@@ -101,7 +106,7 @@ input[type="checkbox"] {
     position: absolute;
 }
 
-.toggle-container input[type="checkbox"], .toggle-container label, .banner-caption img, .banner-caption h2{
+.toggle-container input[type="checkbox"], .toggle-container label, .banner-caption img, .banner-caption h2, .banner-buttons{
     display: inline-block;
     vertical-align: middle;
 }

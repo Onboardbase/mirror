@@ -322,7 +322,7 @@ function createTailwindModal(keys) {
   <div class="bg-white sm:rounded-lg w-96 mx-7 relative shadow-xs">
     <div class="flex justify-between items-center py-4 px-4 border-b border-gray-100">
       <div class="text-left">
-        <h2 class="text-xl md:text-xl leading-4 font-extrabold">Detect Keys</h2>
+        <h2 class="text-xl md:text-xl leading-4 font-extrabold">Start Here</h2>
         <p class="mt-1 text-sm leading-5 text-gray-500 font-medium">Add to Onboardbase</p>
       </div>
       <a href="/">
