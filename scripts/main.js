@@ -163,7 +163,7 @@ const keyStates = new Map();
 let keyFoundInDOM = false; // flag to check if key is found
 
 function blurKeys(foundKeys) {
-  console.log('Found keys:', JSON.stringify(foundKeys));
+  // console.log('Found keys:', JSON.stringify(foundKeys));
 
   // Injecting CSS for blurred-key and blurred-page
   const style = document.createElement('style');
@@ -186,7 +186,7 @@ function blurKeys(foundKeys) {
 
   while (textNodes.nextNode()) {
     const node = textNodes.currentNode;
-    console.log("Processing text node: ", node.nodeValue); 
+    // console.log("Processing text node: ", node.nodeValue); 
     let textContent = node.nodeValue;
 
     const replacements = [];
@@ -201,7 +201,7 @@ function blurKeys(foundKeys) {
 
     // Sort replacements by index
     replacements.sort((a, b) => a.start - b.start);
-    console.log('Replacements:', JSON.stringify(replacements));
+    // console.log('Replacements:', JSON.stringify(replacements));
 
     if (replacements.length > 0) {
       let lastIndex = 0;
