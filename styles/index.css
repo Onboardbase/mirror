@@ -15,7 +15,7 @@ body {
     Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     background: var(--dark-bg);
     color: var(--white-color);
-    width: 250px;
+    width: 300px;
     padding: 15px;
 }
 
@@ -42,7 +42,10 @@ h2 {
 }
 
 .option-list {
-    margin-bottom: 5px;
+}
+
+.mt-5 {
+    margin-top: 8px;
 }
 
 
@@ -136,11 +139,11 @@ input[type="checkbox"]:checked + label:after {
     margin-right: 10px;
 }
 
-.toggle-container {
+/* .toggle-container {
     display: inline-flex;
     align-items: center;
     cursor: pointer;
-}
+} */
 
 .toggle-input {
     display: none; 
@@ -148,7 +151,7 @@ input[type="checkbox"]:checked + label:after {
 
 .toggle-label {
     position: relative;
-    padding-left: 35px;
+    padding-left: 55px;
     cursor: pointer;
     user-select: none;
 }
@@ -157,36 +160,58 @@ input[type="checkbox"]:checked + label:after {
 .toggle-label:after {
     content: '';
     position: absolute;
-    left: 0;
+    left: 0px;
     top: 0;
 }
 
 .toggle-label:before {
-    width: 25px;
-    height: 15px;
+    width: 35px !important;
+    height: 12px !important;
     background: #ccc;
-    border-radius: 15px;
+    border-radius: 20px;
+    border: 1px solid var(--fad-dark-s);
 }
 
 .toggle-label:after {
-    width: 15px;
-    height: 15px;
-    background: white;
+    width: 18px;
+    height: 18px;
+    background: var(--white-color);
     border-radius: 50%;
     transition: all 0.3s;
+    margin-top: -2px;
 }
 
+/* input[type="checkbox"]:checked + label:after {
+    content: '';
+    position: absolute;
+    top: 4.5px;
+    left: 4.5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 6px;
+    background-color: var(--white-color);
+    transition: left 0.15s ease;
+} */
+
 .toggle-input:checked + .toggle-label:before {
-    background: #4CAF50;
+    background: var(--btn-bg);
 }
 
 .toggle-input:checked + .toggle-label:after {
     transform: translateX(10px);
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 50%;
+    margin-top: -2px;
+    left: 9px !important;
+    top: 0 !important;
+    right: 0 !important;
+    transition: all 0.3s !important;
 }
 
 
 
-.toggle-copy {
+/* .toggle-copy {
     margin-top: 10px;
 }
 
@@ -203,4 +228,4 @@ input[type="checkbox"]:checked + label:after {
 
 .toggle-copy .toggle-label:after {
     background: #444;
-}
+} */
