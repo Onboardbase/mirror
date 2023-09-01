@@ -79,9 +79,7 @@ label {
     padding-left: 30px;
 }
 
-.toggle-blur {
-    margin-top: 15px;
-}
+
 
 /* Custom checkbox styling */
 input[type="checkbox"] {
@@ -127,4 +125,82 @@ input[type="checkbox"]:checked + label:after {
 
 .blurred-key {
     filter: blur(5px);
+}
+
+.banner-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.scan-button {
+    margin-right: 10px;
+}
+
+.toggle-container {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.toggle-input {
+    display: none; 
+}
+
+.toggle-label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.toggle-label:before,
+.toggle-label:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.toggle-label:before {
+    width: 25px;
+    height: 15px;
+    background: #ccc;
+    border-radius: 15px;
+}
+
+.toggle-label:after {
+    width: 15px;
+    height: 15px;
+    background: white;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.toggle-input:checked + .toggle-label:before {
+    background: #4CAF50;
+}
+
+.toggle-input:checked + .toggle-label:after {
+    transform: translateX(10px);
+}
+
+
+
+.toggle-copy {
+    margin-top: 10px;
+}
+
+.toggle-blur {
+    margin-left: 20px;
+}
+.toggle-copy .toggle-label:before {
+    background: #ccc; 
+}
+
+.toggle-copy .toggle-input:checked + .toggle-label:after {
+    background: white;
+}
+
+.toggle-copy .toggle-label:after {
+    background: #444;
 }
