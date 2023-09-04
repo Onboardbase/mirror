@@ -47,7 +47,7 @@ const keyPatterns = [
  
   // Your content script logic
 function scanPageForKeys() {
-    const textNodes = document.createTreeWalker(
+      const textNodes = document.createTreeWalker(
         document.body,
         NodeFilter.SHOW_TEXT,
         null,
@@ -67,12 +67,12 @@ function scanPageForKeys() {
           }
         });
       }
-        // console.log(foundKeys);
-        if (foundKeys.length > 0) {
-          const keysString = foundKeys.map(keyObj => `${keyObj.type}=${keyObj.value}`).join('\n');
-          createTailwindModal(keysString);
-        }
-        
+      // console.log(foundKeys);
+      if (foundKeys.length > 0) {
+        const keysString = foundKeys.map(keyObj => `${keyObj.type}=${keyObj.value}`).join('\n');
+        createTailwindModal(keysString);
+      }
+      
     
     
     return foundKeys;
@@ -130,6 +130,7 @@ function scanPageForKeys() {
         const keysString = foundKeys.map(keyObj => `${keyObj.type}=${keyObj.value}`).join('\n');
         createTailwindModal(keysString);
       }
+    return foundKeys;
 }
 
 const originalNodes = new Map();
