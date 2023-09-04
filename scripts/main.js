@@ -258,14 +258,14 @@ function throttle(func, limit) {
 }
 let observer;
 
-const observe = () => {
+const createObserver = (callback, time , shouldSkip = () => false) => {
   const runDocumentMutations = throttle(() => {
-    scanPageForKeys();
-  }, 1000);
+    callback();
+  }, time);
 
-  observer = new MutationObserver((mutationsList) => {
+  const observer = new MutationObserver((mutationsList) => {
     for (const mutation of mutationsList) {
-      if (mutation.target.id === 'keyModal') {
+      if (shouldSkip(mutation)) {
         return;
       }
     }
@@ -276,47 +276,21 @@ const observe = () => {
     childList: true,
     subtree: true,
   });
+
+  return observer; 
+};
+
+const observe = () => {
+  const shouldSkip = (mutation) => mutation.target.id === 'keyModal';
+  createObserver(scanPageForKeys, 1000, shouldSkip);
 };
 
 const blurObserve = () => {
-  const runDocumentMutations = throttle(() => {
-    scanPageForKeysWithoutModal();
-  }, 1000);
-
-  observer = new MutationObserver((mutationsList) => {
-    for (const mutation of mutationsList) {
-      if (mutation.target.id === 'keyModal') {
-        return;
-      }
-    }
-    runDocumentMutations();
-  });
-
-  observer.observe(document, {
-    childList: true,
-    subtree: true,
-  });
+  createObserver(scanPageForKeysWithoutModal, 1000);
 };
 
-
 const clipboardObserver = () => {
-  const runDocumentMutations = throttle(() => {
-     scanClipBoardForKeys();
-  }, 1000);
-
-  observer = new MutationObserver((mutationsList) => {
-    for (const mutation of mutationsList) {
-      if (mutation.target.id === 'keyModal') {
-        return;
-      }
-    }
-    runDocumentMutations();
-  });
-
-  observer.observe(document, {
-    childList: true,
-    subtree: true,
-  });
+  createObserver(scanClipBoardForKeys, 10000);
 };
 
       
