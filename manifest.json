@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Onboardbase Secret Mirror",
-  "description": "A secret key and env detector for Onboardbase",
+  "name": "Onboardbase Mirror",
+  "description": "Detect and obscure API key as you stream",
   "version": "0.0.1",
   "author": "Onboardbase",
   "permissions": ["activeTab", "storage", "scripting"],
